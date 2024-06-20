@@ -10,7 +10,7 @@ final class Request
      */
     public static function post(): array
     {
-        self::checkCSRFToken();
+        self::checkCsrfToken();
         return self::$data = $_POST;
     }
 
@@ -26,10 +26,11 @@ final class Request
     /**
      * Check the CSRF token sent by the client
      */
-    private static function checkCSRFToken()
+    private static function checkCsrfToken()
     {
         $token = $_POST["CSRF_TOKEN"];
-        if ($token !== CSRF_TOKEN) {
+
+        if ($token !== Csrf::get("CSRF_TOKEN")) {
             $_SESSION["errorMessage"] = "Frobidden request.";
             header("Location: " . BASE_URL . "?page=sign-up");
             exit();

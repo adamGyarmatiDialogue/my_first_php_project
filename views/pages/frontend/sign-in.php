@@ -21,6 +21,8 @@
                         <input type="checkbox" /> Belépés adminként
                     </div>
 
+                    <?= Csrf::input(); ?>
+
                     <div>
                         <button type="submit">Belépés</button>
                     </div>

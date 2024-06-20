@@ -7,3 +7,6 @@ require "Layout.php";
 require "User.php";
 require "Admin.php";
 require "Guest.php";
+require "Session.php";
+require "Csrf.php";
+require "Str.php";

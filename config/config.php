@@ -5,4 +5,3 @@ if (session_status() === PHP_SESSION_NONE) {
 }
 
 define('BASE_URL', 'http://localhost/my_first_website');
-define('CSRF_TOKEN', 'mTuI6r7qR94twqOX0mJK8dOxkJA5Go');

@@ -37,7 +37,7 @@
                         <input type="checkbox" name="isAdmin" /> Regisztráció adminként
                     </div>
 
-                    <input type="hidden" value="<?php echo CSRF_TOKEN; ?>" name="CSRF_TOKEN" />
+                    <?= Csrf::input(); ?>
 
                     <div>
                         <button type=" submit">Regisztráció</button>
@@ -48,7 +48,7 @@
                     echo "<div class=\"alert-danger\">" . $_SESSION['errorMessage'] . "</div>";
                     unset($_SESSION['errorMessage']);
                 }
-                ?>
+                    ?>
             </div>
         </div>
     </div>
