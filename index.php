@@ -1,5 +1,7 @@
 <?php
 
+require "config/config.php";
+
 $admin = null;
 $user = null;
 
