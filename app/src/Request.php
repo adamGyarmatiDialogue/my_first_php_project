@@ -1,6 +1,6 @@
 <?php
 
-class Request
+final class Request
 {
     private static $data;
 

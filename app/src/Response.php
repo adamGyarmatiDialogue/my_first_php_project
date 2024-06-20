@@ -1,6 +1,6 @@
 <?php
 
-class Response
+final class Response
 {
     private string $location;
 
@@ -8,9 +8,9 @@ class Response
     {
         $this->location = $location;
     }
+
     /**
      * Redirect the user to the given url
-     * @param
      */
     public function redirect(): void
     {
