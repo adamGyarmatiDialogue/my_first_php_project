@@ -37,8 +37,10 @@
                         <input type="checkbox" name="isAdmin" /> Regisztráció adminként
                     </div>
 
+                    <input type="hidden" value="<?php echo CSRF_TOKEN; ?>" name="CSRF_TOKEN" />
+
                     <div>
-                        <button type="submit">Regisztráció</button>
+                        <button type=" submit">Regisztráció</button>
                     </div>
                 </form>
                 <?php
