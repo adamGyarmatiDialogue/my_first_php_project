@@ -13,3 +13,7 @@ body {
 .clear {
   clear: both;
 }
+
+.mb-2 {
+  margin-bottom: 10px;
+}

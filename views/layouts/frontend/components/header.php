@@ -9,7 +9,7 @@ $page = $_GET["page"] ?? "";
 
         <nav>
             <ul>
-                <a href="<?php echo BASE_URL; ?>">
+                <a href="<?php echo BASE_URL; ?>" class="<?= ($page === '') ? 'active' : '' ?>">
                     <li>Kezdőlap</li>
                 </a>
 

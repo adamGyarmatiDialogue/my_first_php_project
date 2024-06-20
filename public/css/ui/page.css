@@ -1,0 +1,10 @@
+.page .page-header {
+  margin-bottom: 15px;
+  border-bottom: 1px solid #ccc;
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
+.page .page-header .page-title {
+  font-weight: bold;
+}

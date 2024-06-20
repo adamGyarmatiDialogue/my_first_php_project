@@ -4,7 +4,7 @@ $page = $_GET["page"] ?? "";
 <div class="fe-layout_content">
     <div class="container">
         <?php
-        if (!isset($page)) {
+        if ($page === '') {
             require "views/pages/frontend/homepage.php";
         }
 

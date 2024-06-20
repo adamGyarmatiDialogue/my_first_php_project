@@ -7,6 +7,10 @@
     <title>Document</title>
 
     <link rel="stylesheet" href="public/css/layouts/base.css" />
+    <link rel="stylesheet" href="public/css/ui/page.css" />
+    <link rel="stylesheet" href="public/css/ui/card.css" />
+    <link rel="stylesheet" href="public/css/ui/input.css" />
+    <link rel="stylesheet" href="public/css/ui/alert.css" />
     <link rel="stylesheet" href="public/css/layouts/frontend/layout.css" />
     <link rel="stylesheet" href="public/css/layouts/frontend/components/header.css" />
     <link rel="stylesheet" href="public/css/layouts/frontend/components/content.css" />
@@ -16,7 +20,7 @@
     <?php
     require 'components/header.php';
     require 'components/content.php';
-    require 'components/footer.php';
+    // require 'components/footer.php';
     ?>
 </body>
 

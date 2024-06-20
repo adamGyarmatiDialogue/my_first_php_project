@@ -9,31 +9,31 @@
         <div class="card">
             <div class="card-body">
                 <form method="POST" action="app/services/users/sign-up.php">
-                    <div>
+                    <div class="mb-2">
                         <input type="text" placeholder="Vezetéknév: *" name="firstName" />
                     </div>
 
-                    <div>
+                    <div class="mb-2">
                         <input type="text" placeholder="Keresztnév: *" name="lastName" />
                     </div>
 
-                    <div>
+                    <div class="mb-2">
                         <input type="text" placeholder="Felhasználónév: *" name="username" />
                     </div>
 
-                    <div>
+                    <div class="mb-2">
                         <input type="text" placeholder="Email cím: *" name="email" />
                     </div>
 
-                    <div>
+                    <div class="mb-2">
                         <input type="password" placeholder="Jelszó: *" name="password" />
                     </div>
 
-                    <div>
+                    <div class="mb-2">
                         <input type="password" placeholder="Jelszó újra (megerősítés): *" name="reTypedPassword" />
                     </div>
 
-                    <div>
+                    <div class="mb-2">
                         <input type="checkbox" name="isAdmin" /> Regisztráció adminként
                     </div>
 
@@ -43,7 +43,7 @@
                 </form>
                 <?php
                 if (isset($_SESSION['errorMessage'])) {
-                    echo "<div>" . $_SESSION['errorMessage'] . "</div>";
+                    echo "<div class=\"alert-danger\">" . $_SESSION['errorMessage'] . "</div>";
                     unset($_SESSION['errorMessage']);
                 }
                 ?>

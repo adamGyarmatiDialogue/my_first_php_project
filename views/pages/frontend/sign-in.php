@@ -9,15 +9,15 @@
         <div class="card">
             <div class="card-body">
                 <form>
-                    <div>
+                    <div class="mb-2">
                         <input type="text" placeholder="Email cím vagy felhasználónév: *" />
                     </div>
 
-                    <div>
+                    <div class="mb-2">
                         <input type="password" placeholder="Jelszó: *" />
                     </div>
 
-                    <div>
+                    <div class="mb-2">
                         <input type="checkbox" /> Belépés adminként
                     </div>
 
