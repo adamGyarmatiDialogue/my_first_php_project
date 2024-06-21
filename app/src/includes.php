@@ -11,3 +11,4 @@ require "Session.php";
 require "Csrf.php";
 require "Str.php";
 require "Validator.php";
+require "DB.php";
