@@ -1,9 +1,8 @@
 <?php
 
-final class SignUp
+final class SignUp extends Testable
 {
     private array $data;
-    private bool $isTest;
     private Response $response;
     private User $user;
 
@@ -37,9 +36,11 @@ final class SignUp
      */
     private function checkCsrf()
     {
-        if (!Csrf::check($this->data["CSRF_TOKEN"])) {
-            Session::put("errorMessage", "FORBIDDEN");
-            $this->response->redirect();
+        if (!$this->isTest) {
+            if (!Csrf::check($this->data["CSRF_TOKEN"])) {
+                Session::put("errorMessage", "FORBIDDEN");
+                $this->response->redirect();
+            }
         }
     }
 
@@ -48,6 +49,9 @@ final class SignUp
      */
     private function validateData()
     {
+        if (sizeof($this->data) === 0) {
+            $this->getErrorMessage("Give valid data.");
+        }
         $isValid = Validator::validate($this->data, [
             "firstName" => ["required", "min:2", "max:255"],
             "lastName" => ["required", "min:2", "max:255"],
@@ -58,8 +62,12 @@ final class SignUp
         ]);
 
         if (!$isValid) {
-            Session::put("errorMessage", Validator::first());
-            $this->response->redirect();
+            if (!$this->isTest) {
+                Session::put("errorMessage", Validator::first());
+                $this->response->redirect();
+            } else {
+                $this->getErrorMessage("Validation failed.");
+            }
         }
     }
 
@@ -71,8 +79,12 @@ final class SignUp
         $userFound = $this->user->findFirstByUsername($this->data['username']);
 
         if ($userFound !== false) {
-            Session::put('errorMessage', 'user.username.taken');
-            $this->response->redirect();
+            if (!$this->isTest) {
+                Session::put('errorMessage', 'user.username.taken');
+                $this->response->redirect();
+            } else {
+                $this->getErrorMessage("Username has taken.");
+            }
         }
     }
 
@@ -84,8 +96,12 @@ final class SignUp
         $userFound = $this->user->findFirstByEmail($this->data['email']);
 
         if ($userFound !== false) {
-            Session::put('errorMessage', 'user.email_address.taken');
-            $this->response->redirect();
+            if (!$this->isTest) {
+                Session::put('errorMessage', 'user.email_address.taken');
+                $this->response->redirect();
+            } else {
+                $this->getErrorMessage("Email has taken.");
+            }
         }
     }
 
@@ -95,7 +111,11 @@ final class SignUp
     private function creteUser()
     {
         $this->user->create($this->data);
-        Session::put('successMessage', 'user.created');
-        $this->response->redirect();
+        if (!$this->isTest) {
+            Session::put('successMessage', 'user.created');
+            $this->response->redirect();
+        } else {
+            $this->getErrorMessage("User created failed.");
+        }
     }
 }

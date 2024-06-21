@@ -6,6 +6,7 @@ require "Response.php";
 require "Layout.php";
 require "Page.php";
 require "Model.php";
+require "Testable.php";
 require "User.php";
 require "Admin.php";
 require "Guest.php";
