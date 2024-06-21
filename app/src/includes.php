@@ -4,6 +4,7 @@ require "App.php";
 require "Request.php";
 require "Response.php";
 require "Layout.php";
+require "Page.php";
 require "Model.php";
 require "User.php";
 require "Admin.php";

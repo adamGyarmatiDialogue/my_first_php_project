@@ -6,3 +6,12 @@
   color: red;
   font-style: italic;
 }
+
+.alert-success {
+  margin-top: 10px;
+  border-radius: 4px;
+  border: 1px solid green;
+  padding: 10px;
+  color: green;
+  font-style: italic;
+}

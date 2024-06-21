@@ -4,17 +4,18 @@ $page = $_GET["page"] ?? "";
 <div class="fe-layout_content">
     <div class="container">
         <?php
-        if ($page === '') {
-            require "views/pages/frontend/homepage.php";
-        }
+        $pageObj = new Page();
+        $pageObj->setPath('views/pages/frontend/homepage.php');
 
         if ($page === 'sign-up') {
-            require "views/pages/frontend/sign-up.php";
+            $pageObj->setPath('views/pages/frontend/sign-up.php');
         }
 
         if ($page === 'sign-in') {
-            require "views/pages/frontend/sign-in.php";
+            $pageObj->setPath('views/pages/frontend/sign-in.php');
         }
+
+        $pageObj->show();
         ?>
     </div>
 </div>

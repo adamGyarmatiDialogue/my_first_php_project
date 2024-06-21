@@ -12,6 +12,8 @@ if (!Csrf::check($data["CSRF_TOKEN"])) {
     $response->redirect();
 }
 
+
+
 $rules = [
     "firstName" => ["required", "min:2", "max:255"],
     "lastName" => ["required", "min:2", "max:255"],
@@ -31,9 +33,23 @@ if (!$isValid) {
 // Validate the unique username and save the data to the database
 $user = new User();
 
-if ($user->checkUsernameHasTaken($data["username"]) !== false) {
-    Session::put("errorMessage", "user.username_taken");
+// Check the username has taken
+$userFound = $user->findFirstByUsername($data['username']);
+
+if ($userFound !== false) {
+    Session::put('errorMessage', 'user.username.taken');
     $response->redirect();
 }
 
-$user->register($data);
+// Check the email address has taken
+$userFound = $user->findFirstByEmail($data['email']);
+
+if ($userFound !== false) {
+    Session::put('errorMessage', 'user.email_address.taken');
+    $response->redirect();
+}
+
+// Create the user
+$user->create($data);
+Session::put('successMessage', 'user.created');
+$response->redirect();

@@ -22,23 +22,45 @@ final class Session
     }
 
     /**
-     * Check the session has the given key
-     * @param string $key - key of the session
-     * @return bool - True if the key exist
-     */
+    * Check the session has the given key
+    * @param string $key - key of the session
+    * @return bool - True if the key exist
+    */
     public static function has(string $key): bool
     {
         return isset($_SESSION[$key]);
     }
 
     /**
-     * Delete the key and value from the session
-     * @param string $key - key of the session
-     */
+    * Delete the key and value from the session
+    * @param string $key - key of the session
+    */
     public static function delete(string $key)
     {
         if (self::has($key)) {
             unset($_SESSION[$key]);
+        }
+    }
+
+    /**
+    * Show the error message
+    */
+    public static function showErrorMessage()
+    {
+        if (self::has('errorMessage')) {
+            echo "<div class=\"alert-danger\">" . self::get('errorMessage') . "</div>";
+            self::delete('errorMessage');
+        }
+    }
+
+    /**
+    * Show the message if something has succeeded to do
+    */
+    public static function showSuccessMessage()
+    {
+        if (self::has('successMessage')) {
+            echo "<div class=\"alert-success\">" . self::get('successMessage') . "</div>";
+            self::delete('successMessage');
         }
     }
 }

@@ -44,10 +44,8 @@
                     </div>
                 </form>
                 <?php
-                if (isset($_SESSION['errorMessage'])) {
-                    echo "<div class=\"alert-danger\">" . $_SESSION['errorMessage'] . "</div>";
-                    unset($_SESSION['errorMessage']);
-                }
+                    Session::showErrorMessage();
+                    Session::showSuccessMessage();
                     ?>
             </div>
         </div>
