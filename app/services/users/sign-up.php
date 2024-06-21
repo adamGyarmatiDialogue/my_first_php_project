@@ -28,4 +28,12 @@ if (!$isValid) {
     $response->redirect();
 }
 
-echo "Data are valid";
+// Validate the unique username and save the data to the database
+$user = new User();
+
+if ($user->checkUsernameHasTaken($data["username"]) !== false) {
+    Session::put("errorMessage", "user.username_taken");
+    $response->redirect();
+}
+
+$user->register($data);
