@@ -33,13 +33,13 @@ require 'sign-up.class.php';
 // $signUp->signUp();
 
 // User created successfully
-$signUp = new SignUp([
-    "firstName" => "Teszt",
-    "lastName" => Str::generateRandomString(25),
-    "firstName" => Str::generateRandomString(25),
-    "username" => Str::generateRandomString(25),
-    "email" => "teszt" . Str::generateRandomString(25) . "@gmail.com",
-    "password" => "password",
-    "reTypedPassword" => "password",
-], true);
-$signUp->signUp();
+// $signUp = new SignUp([
+//     "firstName" => "Teszt",
+//     "lastName" => Str::generateRandomString(25),
+//     "firstName" => Str::generateRandomString(25),
+//     "username" => Str::generateRandomString(25),
+//     "email" => "teszt" . Str::generateRandomString(25) . "@gmail.com",
+//     "password" => "password",
+//     "reTypedPassword" => "password",
+// ], true);
+// $signUp->signUp();

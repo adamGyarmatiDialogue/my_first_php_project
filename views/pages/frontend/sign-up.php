@@ -44,9 +44,9 @@
                     </div>
                 </form>
                 <?php
-                    Session::showErrorMessage();
-                    Session::showSuccessMessage();
-                    ?>
+                Session::showErrorMessage();
+                Session::showSuccessMessage();
+                ?>
             </div>
         </div>
     </div>

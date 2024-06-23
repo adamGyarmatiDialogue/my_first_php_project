@@ -8,17 +8,17 @@
     <div class="page-content">
         <div class="card">
             <div class="card-body">
-                <form>
+                <form action="app/services/users/sign-in.php" method="POST">
                     <div class="mb-2">
-                        <input type="text" placeholder="Email cím vagy felhasználónév: *" />
+                        <input type="text" name="email" placeholder="Email cím vagy felhasználónév: *" />
                     </div>
 
                     <div class="mb-2">
-                        <input type="password" placeholder="Jelszó: *" />
+                        <input type="password" name="password" placeholder="Jelszó: *" />
                     </div>
 
                     <div class="mb-2">
-                        <input type="checkbox" /> Belépés adminként
+                        <input type="checkbox" name="isAdmin" /> Belépés adminként
                     </div>
 
                     <?= Csrf::input(); ?>
@@ -27,6 +27,10 @@
                         <button type="submit">Belépés</button>
                     </div>
                 </form>
+                <?php
+                Session::showErrorMessage();
+                Session::showSuccessMessage();
+                ?>
             </div>
         </div>
     </div>
