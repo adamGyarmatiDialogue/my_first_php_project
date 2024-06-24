@@ -17,4 +17,9 @@ final class Response
         header("Location: " . BASE_URL . $this->location);
         exit();
     }
+
+    public function setLocation(string $location): void
+    {
+        $this->location = $location;
+    }
 }

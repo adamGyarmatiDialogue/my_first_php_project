@@ -7,8 +7,12 @@ final class App
      */
     public static function start()
     {
-        $admin = null;
-        $user = null;
+        $admin = Session::get("admin") ?? null;
+        $user = Session::get("user") ?? null;
+
+        // Session::delete("admin");
+        // Session::delete("user");
+
         $layout = new Layout("views/layouts/frontend/layout.php");
 
         if ($user) {

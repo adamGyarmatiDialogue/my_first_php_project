@@ -127,5 +127,15 @@ class SignIn extends Testable
         $this->userLogin->create([
             "userId" => $this->loggedInUser->id,
         ]);
+
+        $isAdmin = $this->data["isAdmin"] ?? "";
+        if ($isAdmin === "on") {
+            Session::put("admin", $this->loggedInUser);
+        } else {
+            Session::put("user", $this->loggedInUser);
+        }
+
+        $this->response->setLocation("/");
+        $this->response->redirect();
     }
 }
