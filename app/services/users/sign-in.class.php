@@ -81,21 +81,33 @@ class SignIn extends Testable
             $user = $this->user->findFirstByUsername($this->data["email"]);
 
             if (!$user) {
-                Session::put("errorMessage", "Wrong login data.");
-                $this->response->redirect();
+                if (!$this->isTest) {
+                    Session::put("errorMessage", "Wrong login data.");
+                    $this->response->redirect();
+                } else {
+                    $this->getErrorMessage("Wrong login data");
+                }
             }
         }
 
         if (($this->data["isAdmin"] ?? "") === "on") {
             if ($user->is_admin !== RecordStatus::ACTIVE->value) {
-                Session::put("errorMessage", "Can not login.");
-                $this->response->redirect();
+                if (!$this->isTest) {
+                    Session::put("errorMessage", "Can not login.");
+                    $this->response->redirect();
+                } else {
+                    $this->getErrorMessage("Can not log in not an admin");
+                }
             }
         }
 
         if ($user->status !== RecordStatus::ACTIVE->value) {
-            Session::put("errorMessage", "Can not login.");
-            $this->response->redirect();
+            if (!$this->isTest) {
+                Session::put("errorMessage", "Can not login.");
+                $this->response->redirect();
+            } else {
+                $this->getErrorMessage("Can not log in, wrong status");
+            }
         }
 
         $this->loggedInUser = $user;
@@ -107,8 +119,12 @@ class SignIn extends Testable
     private function checkUsersPassword()
     {
         if (!password_verify($this->data["password"], $this->loggedInUser->password)) {
-            Session::put("errorMessage", "Wrong password");
-            $this->response->redirect();
+            if (!$this->isTest) {
+                Session::put("errorMessage", "Wrong password");
+                $this->response->redirect();
+            } else {
+                $this->getErrorMessage("Wrong password");
+            }
         }
     }
 
@@ -128,14 +144,18 @@ class SignIn extends Testable
             "userId" => $this->loggedInUser->id,
         ]);
 
-        $isAdmin = $this->data["isAdmin"] ?? "";
-        if ($isAdmin === "on") {
-            Session::put("admin", $this->loggedInUser);
-        } else {
-            Session::put("user", $this->loggedInUser);
-        }
+        if (!$this->isTest) {
+            $isAdmin = $this->data["isAdmin"] ?? "";
+            if ($isAdmin === "on") {
+                Session::put("admin", $this->loggedInUser);
+            } else {
+                Session::put("user", $this->loggedInUser);
+            }
 
-        $this->response->setLocation("/");
-        $this->response->redirect();
+            $this->response->setLocation("/");
+            $this->response->redirect();
+        } else {
+            $this->getErrorMessage("Logged in successfully.");
+        }
     }
 }
