@@ -1,5 +1,14 @@
 <?php
 
+namespace App\Services\Users;
+
+use App\Src\Csrf;
+use App\Src\User;
+use App\Src\Session;
+use App\Src\Response;
+use App\Src\Testable;
+use App\Src\Validator;
+
 final class SignUp extends Testable
 {
     private array $data;

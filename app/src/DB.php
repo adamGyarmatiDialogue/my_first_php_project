@@ -1,5 +1,7 @@
 <?php
 
+namespace App\Src;
+
 class DB
 {
     private static $pdo;
@@ -15,7 +17,7 @@ class DB
     public static function connect(): mixed
     {
         if (self::$pdo === null) {
-            self::$pdo = new PDO(DB_DSN, DB_USERNAME, DB_PASSWORD);
+            self::$pdo = new \PDO(DB_DSN, DB_USERNAME, DB_PASSWORD);
         }
 
         return self::$pdo;

@@ -1,5 +1,7 @@
 <?php
 
+namespace App\Src;
+
 class User extends Model
 {
     /**

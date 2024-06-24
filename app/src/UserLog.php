@@ -1,5 +1,7 @@
 <?php
 
+namespace App\Src;
+
 class UserLog extends Model
 {
     /**

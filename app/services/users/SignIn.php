@@ -1,5 +1,17 @@
 <?php
 
+namespace App\Services\Users;
+
+use App\Enums\RecordStatus;
+use App\Src\Csrf;
+use App\Src\User;
+use App\Src\Session;
+use App\Src\UserLog;
+use App\Src\Response;
+use App\Src\Testable;
+use App\Src\UserLogin;
+use App\Src\Validator;
+
 class SignIn extends Testable
 {
     private array $data;

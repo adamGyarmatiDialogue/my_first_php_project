@@ -1,5 +1,7 @@
 <?php
 
+namespace App\Src;
+
 class Testable
 {
     protected bool $isTest;

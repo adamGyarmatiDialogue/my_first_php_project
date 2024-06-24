@@ -1,6 +1,10 @@
 <?php
 
-final class App
+namespace App\Src;
+
+use App\Src\Middleware\AdminAuth;
+
+final class Bootstrap
 {
     /**
      * Start the application

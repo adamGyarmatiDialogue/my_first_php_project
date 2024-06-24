@@ -1,9 +1,9 @@
 <?php
 
-require '../../../config/config.php';
-require '../../src/includes.php';
-require 'sign-out.class.php';
-require '../../../app/enums/online-status.php';
+require __DIR__ . '/../../../config/config.php';
+require __DIR__ . '/../../../vendor/autoload.php';
+
+use App\Services\Admin\SignOut;
 
 $signOut = new SignOut();
 $signOut->signOut();

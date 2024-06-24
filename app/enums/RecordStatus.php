@@ -1,5 +1,7 @@
 <?php
 
+namespace App\Enums;
+
 enum RecordStatus: int
 {
     case ERROR = -1;

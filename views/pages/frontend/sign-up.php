@@ -1,3 +1,9 @@
+<?php
+
+use App\Src\Csrf;
+use App\Src\Session;
+?>
+
 <div class="page">
     <div class="page-header">
         <div class="page-title">

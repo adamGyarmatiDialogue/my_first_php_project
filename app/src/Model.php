@@ -1,5 +1,7 @@
 <?php
 
+namespace App\Src;
+
 abstract class Model
 {
     protected $pdo;
@@ -30,7 +32,7 @@ abstract class Model
             $stmt->execute();
         }
 
-        return $stmt->fetch(PDO::FETCH_OBJ);
+        return $stmt->fetch(\PDO::FETCH_OBJ);
     }
 
     /**
@@ -50,7 +52,7 @@ abstract class Model
             $stmt->execute();
         }
 
-        return $stmt->fetchAll(PDO::FETCH_OBJ);
+        return $stmt->fetchAll(\PDO::FETCH_OBJ);
     }
 
     /**

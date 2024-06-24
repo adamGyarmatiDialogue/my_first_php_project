@@ -1,5 +1,7 @@
 <?php
 
+namespace App\Src;
+
 final class Csrf
 {
     /**
@@ -35,7 +37,7 @@ final class Csrf
      */
     public static function get(): string
     {
-        if(!Session::get("CSRF_TOKEN")) {
+        if (!Session::get("CSRF_TOKEN")) {
             $csrf = self::generate();
             Session::put("CSRF_TOKEN", $csrf);
         }

@@ -1,5 +1,7 @@
 <?php
 
+namespace App\Enums;
+
 enum OnlineStatus: int
 {
     case OFFLINE = 0;

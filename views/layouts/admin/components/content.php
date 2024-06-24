@@ -1,4 +1,7 @@
 <?php
+
+use App\Src\Page;
+
 $page = $_GET['page'] ?? '';
 ?>
 <div class="admin-content">

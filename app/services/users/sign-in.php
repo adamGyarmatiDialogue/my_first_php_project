@@ -1,9 +1,10 @@
 <?php
 
-require '../../../config/config.php';
-require '../../src/includes.php';
-require '../../../app/enums/record-status.php';
-require 'sign-in.class.php';
+require __DIR__ . '../../../../config/config.php';
+require __DIR__ . '../../../../app/src/includes.php';
+
+use App\Services\Users\SignIn;
+use App\Src\Request;
 
 $signIn = new SignIn(Request::post());
 $signIn->signIn();

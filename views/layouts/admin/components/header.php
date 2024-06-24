@@ -1,4 +1,7 @@
 <?php
+
+use App\Src\Session;
+
 $admin = Session::get('admin');
 ?>
 <div class="admin-header">

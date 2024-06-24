@@ -1,5 +1,7 @@
 <?php
 
+namespace App\Src;
+
 final class Validator
 {
     private static array $errorMessages = [];

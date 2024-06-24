@@ -1,5 +1,7 @@
 <?php
 
+namespace App\Src;
+
 final class Str
 {
     /**

@@ -1,5 +1,7 @@
 <?php
 
+namespace App\Src;
+
 final class Response
 {
     private string $location;
