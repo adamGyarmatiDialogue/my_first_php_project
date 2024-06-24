@@ -49,3 +49,41 @@ CREATE TABLE IF NOT EXISTS users_logins (
 ALTER TABLE users
 ADD COLUMN online_status TINYINT DEFAULT(0)
 AFTER `password`;
+
+-- Create posts table
+CREATE TABLE IF NOT EXISTS posts (
+  id BIGINT NOT NULL AUTO_INCREMENT,
+  title VARCHAR(255) NOT NULL,
+  lead LONGTEXT NOT NULL,
+  content LONGTEXT NOT NULL,
+  status TINYINT DEFAULT(0),
+  created_at TIMESTAMP DEFAULT NOW(),
+  updated_at TIMESTAMP DEFAULT NOW(),
+  published_at TIMESTAMP NULL DEFAULT(NULL),
+  PRIMARY KEY (id)
+);
+
+-- Create files table
+CREATE TABLE IF NOT EXISTS files (
+  id BIGINT NOT NULL AUTO_INCREMENT,
+  file_hash VARCHAR(255) NOT NULL,
+  file_name VARCHAR(512) NOT NULL,
+  file_type VARCHAR(255) NOT NULL,
+  extension VARCHAR(255) NOT NULL,
+  file_size BIGINT DEFAULT(0),
+  status TINYINT DEFAULT(0),
+  created_at TIMESTAMP DEFAULT NOW(),
+  updated_at TIMESTAMP DEFAULT NOW(),
+  PRIMARY KEY (id)
+);
+
+-- Create the posts_files table
+CREATE TABLE IF NOT EXISTS posts_files (
+  id BIGINT NOT NULL AUTO_INCREMENT,
+  post_id BIGINT DEFAULT(0),
+  file_id BIGINT DEFAULT(0),
+  status TINYINT DEFAULT(0),
+  created_at TIMESTAMP DEFAULT NOW(),
+  updated_at TIMESTAMP DEFAULT NOW(),
+  PRIMARY KEY (id)
+);
