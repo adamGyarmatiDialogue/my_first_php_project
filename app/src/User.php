@@ -14,13 +14,27 @@ class User extends Model
         $sql = "INSERT INTO `users`
       (`first_name`, `last_name`, `username`, `email`, `password`, `is_admin`) VALUES
       (:firstName, :lastName, :username, :email, :password, :isAdmin) ";
-        $this->insert($sql, [
+        $this->exec($sql, [
             'firstName' => trim($data['firstName']),
             'lastName' => trim($data['lastName']),
             'username' => $data['username'],
             'email' => $data['email'],
             'password' => $password,
             'isAdmin' => $isAdmin,
+        ]);
+    }
+
+    /**
+     * Update the users online status
+     * @param int $userId
+     * @param int $onlineStatus
+     */
+    public function updateOnlineStatus($userId, $onlineStatus)
+    {
+        $sql = "UPDATE users SET online_status = :onlineStatus where id = :userId LIMIT 1";
+        $this->exec($sql, [
+            'onlineStatus' => $onlineStatus,
+            'userId' => $userId,
         ]);
     }
 
@@ -51,6 +65,6 @@ class User extends Model
      */
     public function findFirstByEmail(string $email): mixed
     {
-        return $this->first("SELECT id FROM users WHERE email = :email", ["email" => $email]);
+        return $this->first("SELECT * FROM users WHERE email = :email", ["email" => $email]);
     }
 }

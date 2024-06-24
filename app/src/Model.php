@@ -10,12 +10,12 @@ abstract class Model
     }
 
     /**
-    * Get the first result of a select query
-    *
-    * @param string $sql The sql query
-    * @param array $params The parameters to be binded
-    * @return mixed The row if found or false
-    */
+     * Get the first result of a select query
+     *
+     * @param string $sql The sql query
+     * @param array $params The parameters to be binded
+     * @return mixed The row if found or false
+     */
     protected function first(string $sql, array $params = []): mixed
     {
         if (strpos($sql, 'LIMIT 1') === false) {
@@ -59,7 +59,7 @@ abstract class Model
      * @param string $sql The sql query
      * @param array $params The parameters to be binded
      */
-    protected function insert(string $sql, array $params = [])
+    protected function exec(string $sql, array $params = [])
     {
         $stmt = $this->pdo->prepare($sql);
 

@@ -10,6 +10,8 @@ require "Testable.php";
 require "User.php";
 require "Admin.php";
 require "Guest.php";
+require "UserLog.php";
+require "UserLogin.php";
 require "Session.php";
 require "Csrf.php";
 require "Str.php";

@@ -44,3 +44,8 @@ CREATE TABLE IF NOT EXISTS users_logins (
   updated_at TIMESTAMP DEFAULT NOW(),
   PRIMARY KEY (id)
 );
+
+-- Add online status to users table
+ALTER TABLE users
+ADD COLUMN online_status TINYINT DEFAULT(0)
+AFTER `password`;

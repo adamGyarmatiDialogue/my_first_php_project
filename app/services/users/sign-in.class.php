@@ -5,6 +5,9 @@ class SignIn extends Testable
     private array $data;
     private Response $response;
     private User $user;
+    private UserLog $userLog;
+    private UserLogin $userLogin;
+    private mixed $loggedInUser;
 
     /**
      * Sign ip
@@ -17,6 +20,9 @@ class SignIn extends Testable
         $this->isTest = $isTest;
         $this->response = new Response("?page=sign-in");
         $this->user = new User();
+        $this->userLog = new UserLog();
+        $this->userLogin = new UserLogin();
+        $this->loggedInUser = new User();
     }
 
     public function signIn()
@@ -24,6 +30,8 @@ class SignIn extends Testable
         $this->checkCsrf();
         $this->validateData();
         $this->checkUser();
+        $this->checkUsersPassword();
+        $this->login();
     }
 
     /**
@@ -78,9 +86,46 @@ class SignIn extends Testable
             }
         }
 
-        if (!password_verify($this->data["password"], $user->password)) {
-            Session::put("errorMessage", "Wrong login data.password");
+        if (($this->data["isAdmin"] ?? "") === "on") {
+            if ($user->is_admin !== RecordStatus::ACTIVE->value) {
+                Session::put("errorMessage", "Can not login.");
+                $this->response->redirect();
+            }
+        }
+
+        if ($user->status !== RecordStatus::ACTIVE->value) {
+            Session::put("errorMessage", "Can not login.");
             $this->response->redirect();
         }
+
+        $this->loggedInUser = $user;
+    }
+
+    /**
+     * Check the users password
+     */
+    private function checkUsersPassword()
+    {
+        if (!password_verify($this->data["password"], $this->loggedInUser->password)) {
+            Session::put("errorMessage", "Wrong password");
+            $this->response->redirect();
+        }
+    }
+
+    /**
+     * Log in
+     */
+    private function login()
+    {
+        $this->user->updateOnlineStatus($this->loggedInUser->id, RecordStatus::ACTIVE->value);
+        $this->userLog->create([
+            "userId" => $this->loggedInUser->id,
+            "objectName" => "user",
+            "eventName" => "logged_in",
+        ]);
+
+        $this->userLogin->create([
+            "userId" => $this->loggedInUser->id,
+        ]);
     }
 }
