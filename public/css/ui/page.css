@@ -8,3 +8,11 @@
 .page .page-header .page-title {
   font-weight: bold;
 }
+
+.page .page-header .page-menu {
+  margin-top: 5px;
+}
+
+.page .page-header .page-menu a {
+  margin-right: 5px;
+}

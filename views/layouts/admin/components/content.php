@@ -14,6 +14,11 @@ $page = $_GET['page'] ?? '';
         $pageObj->setPath('views/pages/admin/posts/index.php');
     }
 
+    // Create post
+    if ($page === "admin-create-post") {
+        $pageObj->setPath('views/pages/admin/posts/create.php');
+    }
+
     $pageObj->show();
     ?>
 </div>

@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="public/css/layouts/admin/components/side-menu.css" />
     <link rel="stylesheet" href="public/css/layouts/admin/components/content.css" />
     <link rel="stylesheet" href="public/css/ui/page.css" />
+    <!-- <link rel="stylesheet" href="../../../public/css/ui/page.css" /> -->
     <link rel="stylesheet" href="public/css/ui/card.css" />
     <link rel="stylesheet" href="public/css/ui/input.css" />
 </head>
