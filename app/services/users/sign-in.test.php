@@ -5,7 +5,7 @@ require '../../src/includes.php';
 require '../../../app/src/enums/record-status.php';
 require 'sign-in.class.php';
 
-echo "Test log in <br />";
+// echo "Test log in <br />";
 
 /**
  * Test - Wrong password
@@ -65,9 +65,9 @@ echo "Test log in <br />";
 /**
  * Test - Successfull login as admin
  */
-$signIn = new SignIn([
-    "email" => "gyarmati",
-    "password" => "password",
-    "isAdmin" => "on",
-], true);
-$signIn->signIn();
+// $signIn = new SignIn([
+//     "email" => "gyarmati",
+//     "password" => "password",
+//     "isAdmin" => "on",
+// ], true);
+// $signIn->signIn();

@@ -1,0 +1,41 @@
+.admin-side-menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 250px;
+  height: calc(100% - 40px);
+  margin-top: 40px;
+  border-right: 1px solid #ddd;
+  background-color: #fff;
+  z-index: 50;
+}
+
+.admin-side-menu a:link,
+.admin-side-menu a:visited {
+  color: #454545;
+  text-decoration: none;
+}
+
+.admin-side-menu .admin-side-menu-item {
+  padding-top: 5px;
+  padding-left: 10px;
+  padding-bottom: 5px;
+  cursor: pointer;
+  transition: all 150ms linear;
+  -webkit-transition: all 150ms linear;
+}
+
+.admin-side-menu .admin-side-menu-item:hover {
+  background-color: #e5e5e6;
+}
+
+.admin-side-menu .admin-side-menu-item .icon-holder,
+.admin-side-menu .admin-side-menu-item .title-holder {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.admin-side-menu .admin-side-menu-item .icon-holder {
+  width: 22px;
+  height: 22px;
+}
