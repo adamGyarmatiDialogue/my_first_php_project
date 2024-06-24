@@ -47,6 +47,16 @@ class User extends Model
     }
 
     /**
+     * Find the first user by the given id
+     * @param int $userId
+     * @return mixed The user or false
+     */
+    public function findFirstById(int $userId): mixed
+    {
+        return $this->first("SELECT * FROM users WHERE id = :userId", ["userId" => $userId]);
+    }
+
+    /**
      * Check the username has taken
      *
      * @param string $username The username to be checked

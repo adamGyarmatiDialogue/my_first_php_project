@@ -12,6 +12,7 @@ require "Admin.php";
 require "Guest.php";
 require "UserLog.php";
 require "UserLogin.php";
+require "Middleware/AdminAuth.php";
 require "Session.php";
 require "Csrf.php";
 require "Str.php";

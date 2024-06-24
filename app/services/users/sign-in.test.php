@@ -2,7 +2,7 @@
 
 require '../../../config/config.php';
 require '../../src/includes.php';
-require '../../../app/src/enums/record-status.php';
+require '../../../app/enums/record-status.php';
 require 'sign-in.class.php';
 
 // echo "Test log in <br />";

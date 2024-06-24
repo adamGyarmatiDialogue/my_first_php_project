@@ -20,6 +20,8 @@ final class App
         }
 
         if ($admin) {
+            $adminAuth = new AdminAuth();
+            $adminAuth->auth();
             $layout->setLayout("views/layouts/admin/layout.php");
         }
 
