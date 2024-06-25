@@ -11,5 +11,7 @@
       "email": "adam.gyarmati@dialoguecreatives.com"
     }
   ],
-  "require": {}
+  "require-dev": {
+    "phpunit/phpunit": "11"
+  }
 }

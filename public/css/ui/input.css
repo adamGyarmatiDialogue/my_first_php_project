@@ -1,5 +1,7 @@
 input[type="text"],
-input[type="password"] {
+input[type="password"],
+input[type="date"],
+textarea {
   width: 100%;
   box-sizing: border-box;
   border-radius: 4px;
@@ -13,7 +15,9 @@ input[type="password"] {
 }
 
 input[type="text"]:focus,
-input[type="password"]:focus {
+input[type="password"]:focus,
+input[type="date"]:focus,
+textarea:focus {
   border: 1px solid blue;
   color: blue;
 }
