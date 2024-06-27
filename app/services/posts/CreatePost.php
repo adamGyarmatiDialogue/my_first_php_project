@@ -2,17 +2,21 @@
 
 namespace App\Services\Posts;
 
+use App\Src\Post;
 use App\Src\Response;
+use App\Src\Session;
 
 use function PHPUnit\Framework\stringContains;
 
 final class CreatePost
 {
     private Response $response;
+    private Post $postModel;
 
     public function __construct()
     {
-        $response = new Response("/");
+        $this->response = new Response("?page=admin-create-post");
+        $this->postModel = new Post();
     }
     /**
      * Create Post
@@ -20,7 +24,13 @@ final class CreatePost
      */
     public function createPost(array $data = [])
     {
-        $this->valdiateFiles($_FILES["files"]);
+        // Check files
+        if (is_uploaded_file($_FILES['files']['tmp_name'][0])) {
+            $this->valdiateFiles($_FILES["files"]);
+        }
+
+        // Create Post
+        $this->postModel->create($data);
     }
 
     /**
@@ -39,6 +49,37 @@ final class CreatePost
         // Check the files size
         if (!$this->checkSize($files["size"])) {
             array_push($errorMessages, "validation.file.size");
+        }
+
+        // Check the error messages
+        if (sizeof($errorMessages) !== 0) {
+            Session::put("errorMessage", $errorMessages[0]);
+            $this->response->redirect();
+        }
+
+        // Check the upload dirs
+        $uploadDir = "../../../public/uploads";
+
+        if (!is_dir($uploadDir)) {
+            mkdir($uploadDir, 0777);
+        }
+
+        // Upload files
+        $tmpNames = $files["tmp_name"];
+        for ($i = 0; $i < sizeof($tmpNames); $i++) {
+            $tmpName = $tmpNames[$i];
+            $fileName = $files["name"][$i];
+            $fileNameParts = explode(".", $files["name"][$i]);
+            $extension = $fileNameParts[sizeof($fileNameParts) - 1];
+            if (!move_uploaded_file($tmpName, $uploadDir . "/" . $fileName . "." . $extension)) {
+                array_push($errorMessages, "message.int.err");
+            }
+        }
+
+        // Check the error messages
+        if (sizeof($errorMessages) !== 0) {
+            Session::put("errorMessage", $errorMessages[0]);
+            $this->response->redirect();
         }
     }
 
