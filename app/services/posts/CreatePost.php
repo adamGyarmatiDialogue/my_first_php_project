@@ -37,6 +37,10 @@ final class CreatePost
 
         // Create Files
         $this->fileModel->insertMultipleFiles($files);
+
+        // Lead back to create
+        $this->response->setLocation("?page=admin-create-post");
+        $this->response->redirect();
     }
 
     /**
