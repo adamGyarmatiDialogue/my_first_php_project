@@ -2,21 +2,23 @@
 
 namespace App\Services\Posts;
 
+use App\Src\File;
 use App\Src\Post;
 use App\Src\Response;
 use App\Src\Session;
 
-use function PHPUnit\Framework\stringContains;
 
 final class CreatePost
 {
     private Response $response;
     private Post $postModel;
+    private File $fileModel;
 
     public function __construct()
     {
         $this->response = new Response("?page=admin-create-post");
         $this->postModel = new Post();
+        $this->fileModel = new File();
     }
     /**
      * Create Post
@@ -25,12 +27,16 @@ final class CreatePost
     public function createPost(array $data = [])
     {
         // Check files
-        if (is_uploaded_file($_FILES['files']['tmp_name'][0])) {
-            $this->valdiateFiles($_FILES["files"]);
+        $files = $_FILES["files"];
+        if (is_uploaded_file($files['tmp_name'][0])) {
+            $this->valdiateFiles($files);
         }
 
         // Create Post
         $this->postModel->create($data);
+
+        // Create Files
+        $this->fileModel->insertMultipleFiles($files);
     }
 
     /**
